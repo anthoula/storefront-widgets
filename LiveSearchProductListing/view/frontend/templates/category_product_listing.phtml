@@ -1,0 +1,36 @@
+<?php
+/** @var $block \Magento\LiveSearchProductListing\Block\Frontend\Category\SaaSContext */
+/** @var $helper \Magento\Search\Helper\Data */
+$helper = $this->helper(\Magento\Search\Helper\Data::class);
+?>
+
+<div id="livesearch_root"
+     data-category-id="<?= $block->escapeHtmlAttr($block->getCategoryId()); ?>"
+     data-currency-symbol="<?= $block->escapeHtmlAttr($block->getCurrencySymbol()); ?>"
+     data-magento-edition="<?= $block->escapeHtmlAttr($block->getMagentoEdition()); ?>"
+     data-magento-version="<?= $block->escapeHtmlAttr($block->getMagentoVersion()); ?>"
+     data-module-version="<?= $block->escapeHtmlAttr($block->getModuleVersion()); ?>"
+     data-customer-group-code="<?= $block->escapeJs($block->getCustomerGroupCode()); ?>"
+></div>
+
+<script>
+    require([
+        "<?= $block->escapeUrl($block->getFrontendUrl()); ?>"
+    ], 
+    function () {
+        const root = document.getElementById("livesearch_root");
+        window.mountLiveSearchPlp({storeDetails: {
+            environmentId: "<?= $block->escapeJs($block->getEnvironmentId()); ?>",
+            websiteCode: "<?= $block->escapeJs($block->getWebsiteCode()); ?>",
+            storeCode: "<?= $block->escapeJs($block->getStoreCode()); ?>",
+            storeViewCode: "<?= $block->escapeJs($block->getStoreViewCode()); ?>",
+            config: {
+                pageSize: "<?= $block->escapeJs($block->getAutocompleteLimit()); ?>",
+                minQueryLength: "<?= $block->escapeJs($helper->getMinQueryLength()); ?>",
+                currencySymbol: "<?= $block->escapeJs($block->getCurrencySymbol()); ?>",
+                currentCategoryUrlPath: "<?= $block->escapeJs($block->getCurrentCategoryUrlPath()); ?>",
+                categoryName: "<?= $block->escapeJs($block->getCategoryName()); ?>"
+            },
+        }, root});
+    })
+</script>
