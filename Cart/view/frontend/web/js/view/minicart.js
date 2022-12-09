@@ -25,13 +25,9 @@ define([
      * @return {Boolean}
      */
     function initSidebar() {
-        alert('initSidebar');
 
-        const root = document.getElementById('anthoula');
 
-        require(['http://localhost:3000/']);
-
-        // require(['https://d1f3flsjknp2wb.cloudfront.net/develop/storefront-sdk/cart/renderer.js', 'https://d1f3flsjknp2wb.cloudfront.net/develop/storefront-sdk/cart/api.js', 'https://develop--helix-venia-jam--magento-comops.hlx.page/scripts/storefront-sdk/containers/Panels.js', 'https://develop--helix-venia-jam--magento-comops.hlx.page/blocks/cart/cart.js']);
+        require(['http://localhost:3000/main.js']);
 
         if (miniCart.data('mageSidebar')) {
             miniCart.sidebar('update');

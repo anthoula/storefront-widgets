@@ -9,9 +9,13 @@
     <policies>
         <policy id="script-src">
             <values>
-                <value id="cloudfront" type="host" algorithm="">*.cloudfront.net</value>
-                <value id="hlx" type="host" algorithm="">*.hlx.page</value>
-                <value id="localhost" type="host" algorithm="">localhost:3000</value>
+                <value id="localhost3000" type="host" algorithm="">localhost:3000</value>
+                <value id="localhost3001" type="host" algorithm="">localhost:3001</value>
+            </values>
+        </policy>
+        <policy id="connect-src">
+            <values>
+                <value id="test" type="host" algorithm="">test:3001</value>
             </values>
         </policy>
     </policies>
